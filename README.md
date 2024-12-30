@@ -9,7 +9,7 @@ You need a Niconico Video account to use it.
 
 ## Download
 
-### [Hohoema - Microsoft Store] (https://www.microsoft.com/ja-jp/store/p/hohoema/9nblggh4rxt6 )
+- [Hohoema - Microsoft Store](https://www.microsoft.com/ja-jp/store/p/hohoema/9nblggh4rxt6)
 
 You can download it from the store app on Windows 10 or XboxOne.
 
