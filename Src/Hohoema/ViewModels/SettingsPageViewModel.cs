@@ -25,7 +25,7 @@ using NicoPlayerHohoema.Helpers;
 using Windows.ApplicationModel.Store;
 using Windows.Storage;
 using System.Diagnostics;
-using Microsoft.Services.Store.Engagement;
+//using Microsoft.Services.Store.Engagement;
 using Windows.System;
 
 namespace NicoPlayerHohoema.ViewModels
@@ -215,10 +215,10 @@ namespace NicoPlayerHohoema.ViewModels
                 return _LaunchFeedbackHubCommand
                     ?? (_LaunchFeedbackHubCommand = new DelegateCommand(async () =>
                     {
-                        if (IsSupportedFeedbackHub)
-                        {
-                            await StoreServicesFeedbackLauncher.GetDefault().LaunchAsync();
-                        }
+                        //if (IsSupportedFeedbackHub)
+                        //{
+                        //   await StoreServicesFeedbackLauncher.GetDefault().LaunchAsync();
+                        //}
                     }));
             }
         }
@@ -237,7 +237,7 @@ namespace NicoPlayerHohoema.ViewModels
         }
 
 
-        public bool IsSupportedFeedbackHub { get; } = StoreServicesFeedbackLauncher.IsSupported();
+        //public bool IsSupportedFeedbackHub { get; } = StoreServicesFeedbackLauncher.IsSupported();
 
 
         NGSettings _NGSettings;

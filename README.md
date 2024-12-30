@@ -1,5 +1,7 @@
 # Hohoema
-My fork of Hohoema (Hohoemu?) uwp app for some micro-RnD (app architecture,  and alests/notifications especially).
+![](Images/logo.png)
+
+My fork of Hohoema (Hohoemu?) uwp app for some micro-RnD (app architecture,  and reactive properties + alerts).
 
 ## Nico Nico Douga - Live Broadcast Player App for Windows 10 families
 
@@ -71,9 +73,9 @@ GPL v3
 
 Hohoema is [tor4kichi](https://twitter.com/tor4kichi) I have a lot of work to do, but I have a lot of work to do.In addition, we have made while getting cooperation in Twitter, Github, FeedbackHub, etc., such as problem report and actual machine confirmation.
 
-For the motivation of the production also [review in the store] ((ms-windows-store://pdp/?ProductID=9nblggh4rxt6)).
+For the motivation of the production also [review in the store](ms-windows-store://pdp/?ProductID=9nblggh4rxt6).
 
-In addition, financial support has become possible from "Settings" → "Add-on of Hohoema (bottom of the page)" → "Support Hohoema" in the Hohoema app.(30% of sales in the store will be deducted from Microsoft as a fee.)）
+In addition, financial support has become possible from "Settings" → "Add-on of Hohoema (bottom of the page)" → "Support Hohoema" in the Hohoema app (30% of sales in the store will be deducted from Microsoft as a fee.)）
 
 We will continue to Nico move players that can be used, so thank you for your support.
 

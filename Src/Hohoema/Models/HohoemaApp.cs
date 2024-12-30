@@ -1,5 +1,5 @@
 ﻿using Mntone.Nico2;
-using Mntone.Nico2.Videos.Thumbnail;
+using Mntone.Nico2.Videos;//.Thumbnail;
 using NicoPlayerHohoema.Helpers;
 using NicoPlayerHohoema.Views.Service;
 using Prism.Events;
