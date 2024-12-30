@@ -47,7 +47,7 @@ It is provided for free (+ in the form of soliciting donations from app add-ons 
   * Mini mode (Desktop/tablet)
 
 
-Other features and fixes can be found in the [Release Notes] (https://github.com/tor4kichi/Hohoema/wiki/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88 You can check it from ()
+Other features and fixes can be found in the [Release Notes](https://github.com/tor4kichi/Hohoema/wiki/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88).
 
 ## Future plans (retrospective , for now)
 
