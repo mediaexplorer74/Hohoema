@@ -92,8 +92,8 @@ In addition, financial support has become possible from "Settings" → "Add-on o
 We will continue to Nico move players that can be used, so thank you for your support.
 
 ## Reference(s)
-- https://twitter.com/tor4kichi/Hohoema Original Hohoema project 
-- https://twitter.com/tor4kichi Author|Developer of Original Hohoema project
+- https://github.com/tor4kichi/Hohoema Original Hohoema project 
+- https://github.com/tor4kichi Author|Developer of Original Hohoema project
 
 ## ..
 As is. Noi support. RnD only! DIY
