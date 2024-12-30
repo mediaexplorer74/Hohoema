@@ -22,10 +22,9 @@ It is provided for free (+ in the form of soliciting donations from app add-ons 
 * XboxOne
 
 ## Tech. details
-Hohoema is a UWP app.（UWP = Universal Windows Platform）
-
-To use it, you need to update to the OS version after "Anniversary Update".
-
+- Hohoema is a UWP（Universal Windows Platform）app.
+- Win. SDK used: 19041
+- Min. Win. SDK = 14393
 
 ## Feature list
 
