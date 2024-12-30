@@ -1,0 +1,109 @@
+﻿<ContentControl
+    x:Class="NicoPlayerHohoema.Views.PlayerWithPageContainer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NicoPlayerHohoema.Views"
+    xmlns:vm="using:NicoPlayerHohoema.ViewModels"
+    
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:NicoPlayerHohoema.Views.Controls"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:mybehavior="using:NicoPlayerHohoema.Views.Behaviors"
+    xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+    xmlns:uwptoolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:templateSelector="using:NicoPlayerHohoema.Views.TemplateSelector"
+    xmlns:mvvm="using:Prism.Windows.Mvvm"
+    mvvm:ViewModelLocator.AutoWireViewModel="True"
+    IsTabStop="False"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <ContentControl.Template>
+        <ControlTemplate>
+            <Grid>
+                <i:Interaction.Behaviors>
+                    <mybehavior:UINavigationTrigger Kind="View" 
+                                                    >
+                        <core:InvokeCommandAction Command="{Binding TogglePlayerFloatDisplayCommand}" />
+                    </mybehavior:UINavigationTrigger>
+                </i:Interaction.Behaviors>
+
+                <controls:FloatContentContainer x:Name="FloatContentContainer"
+                                                IsFillFloatContent="{Binding IsFillFloatContent_DelayedRead.Value}"
+                                                FloatContentVisiblity="{Binding IsVisibleFloatContent.Value, Converter={StaticResource BooleanToVisibility}}"
+                                                IsTabStop="False"
+                                                >
+                    <controls:FloatContentContainer.Content>
+                        <Grid>
+                            <ContentPresenter />
+                        </Grid>
+                    </controls:FloatContentContainer.Content>
+
+                    <controls:FloatContentContainer.FloatContent>
+                        <Grid>
+                            <Frame x:Name="PlayerFrame"
+                                            />
+
+                            
+                            <Grid x:Name="FillPlayerLayout" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                
+                            </Grid>
+
+                            <Grid x:Name="FloatPlayerLayout" Visibility="Collapsed">
+
+                                
+                                
+                                <Border HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="Transparent"
+                                        >
+
+                                    <i:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="Tapped">
+                                            <core:InvokeCommandAction Command="{Binding TogglePlayerFloatDisplayCommand}" />
+                                        </core:EventTriggerBehavior>
+                                    </i:Interaction.Behaviors>
+
+                                    <Border.ContextFlyout>
+                                        <MenuFlyout >
+                                            <MenuFlyoutItem Text="閉じる" Command="{Binding ClosePlayerCommand}"/>
+                                        </MenuFlyout>
+                                    </Border.ContextFlyout>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </controls:FloatContentContainer.FloatContent>
+                </controls:FloatContentContainer>
+
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState x:Name="Fill">
+                            <VisualState.StateTriggers>
+                                <StateTrigger IsActive="{Binding ElementName=FloatContentContainer, Path=IsFillFloatContent}" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="FillPlayerLayout.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                        <VisualState x:Name="Floating">
+                            <VisualState.StateTriggers>
+                                <StateTrigger IsActive="True" />
+                            </VisualState.StateTriggers>
+                            <VisualState.Setters>
+                                <Setter Target="FloatPlayerLayout.Visibility" Value="Visible" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+            </Grid>
+
+        </ControlTemplate>
+    </ContentControl.Template>
+</ContentControl>

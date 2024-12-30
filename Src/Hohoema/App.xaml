@@ -1,0 +1,242 @@
+﻿<prism:PrismUnityApplication
+    x:Class="NicoPlayerHohoema.App"
+    xmlns:prism="using:Prism.Unity.Windows"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NicoPlayerHohoema"
+    xmlns:conv="using:WinRTXamlToolkit.Converters"
+    xmlns:myconv="using:NicoPlayerHohoema.Views.Converters"
+    xmlns:view="using:NicoPlayerHohoema.Views"
+    xmlns:controls="using:NicoPlayerHohoema.Views.Controls"
+    xmlns:uwpconv="using:Microsoft.Toolkit.Uwp.UI.Converters"
+    xmlns:logicalModifier="using:AdaptiveTriggerLibrary.ConditionModifiers.LogicalModifiers"
+    xmlns:compareModifier="using:AdaptiveTriggerLibrary.ConditionModifiers.ComparableModifiers"
+    >
+
+    <prism:PrismUnityApplication.Resources>
+       
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/DefaultStyle.xaml"/>
+                <ResourceDictionary Source="Styles/VideoProgressBarStyle.xaml"/>
+                <ResourceDictionary Source="Styles/HohoemaListItemStyle.xaml"/>
+                <ResourceDictionary Source="Styles/UWPUIControlsDefaultStyles.xaml"/>
+
+                <ResourceDictionary Source="Views/Controls/FloatContentContainer/FloatContentContainer.xaml"/>
+                <ResourceDictionary Source="Views/Controls/IncrementalLoadingList/IncrementalLoadingList.xaml"/>
+                <ResourceDictionary Source="Views/Controls/MasterDetailsView/MasterDetailsView.xaml"/>
+
+                <ResourceDictionary Source="Commands/Commands.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityInverted"
+                                           IsInversed="True"
+                                           />
+            <myconv:InvertVisibilityConverter x:Key="InvertVisibility" />
+
+            <uwpconv:EmptyObjectToObjectConverter x:Key="NotNullToVisibility">
+                <uwpconv:EmptyObjectToObjectConverter.NotEmptyValue>
+                    <Visibility>Visible</Visibility>
+                </uwpconv:EmptyObjectToObjectConverter.NotEmptyValue>
+                <uwpconv:EmptyObjectToObjectConverter.EmptyValue>
+                    <Visibility>Collapsed</Visibility>
+                </uwpconv:EmptyObjectToObjectConverter.EmptyValue>
+            </uwpconv:EmptyObjectToObjectConverter>
+
+            <uwpconv:CollectionVisibilityConverter x:Key="CollectionVisibilityConverter" />
+            <uwpconv:EmptyCollectionToObjectConverter x:Key="EmptyCollectionVisibilityConverter">
+                <uwpconv:EmptyCollectionToObjectConverter.EmptyValue>
+                    <Visibility>Visible</Visibility>
+                </uwpconv:EmptyCollectionToObjectConverter.EmptyValue>
+                <uwpconv:EmptyCollectionToObjectConverter.NotEmptyValue>
+                    <Visibility>Collapsed</Visibility>
+                </uwpconv:EmptyCollectionToObjectConverter.NotEmptyValue>
+            </uwpconv:EmptyCollectionToObjectConverter>
+            <conv:ColorToBrushConverter x:Key="ColorToBrush" />
+            <myconv:TimeSpanToMovieLengthStringValueConverter x:Key="TimeToMovieLengthConverter" />
+            
+            <uwpconv:BoolToObjectConverter x:Key="BooleanInverted" >
+                <uwpconv:BoolToObjectConverter.TrueValue>
+                    <x:Boolean>False</x:Boolean>
+                </uwpconv:BoolToObjectConverter.TrueValue>
+                <uwpconv:BoolToObjectConverter.FalseValue>
+                    <x:Boolean>True</x:Boolean>
+                </uwpconv:BoolToObjectConverter.FalseValue>
+            </uwpconv:BoolToObjectConverter>
+
+            <myconv:SoundVolumeConveter x:Key="ToUserFriendlySoubleVolume" />
+
+            <myconv:CacheStateToColorBrushConverter x:Key="CacheStateToColorBrush" />
+
+            <myconv:VideoPositionToTimeConverter x:Key="VPosToTime" />
+            <myconv:ToUserFriendlyNumber x:Key="ToUserFriendlyNumber" />
+            <myconv:RelationalDateTimeConverter x:Key="ToRelationalTime" />
+
+            <myconv:TransparentColorConverter x:Key="ToTransparentColor" />
+
+            <myconv:NGCommentScoreTypeTemplateSelector x:Key="NGCommentScoreTypeTemplateSelector">
+                <myconv:NGCommentScoreTypeTemplateSelector.NoneTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="なし" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.NoneTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.LowTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="弱" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.LowTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.MiddleTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="中" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.MiddleTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.HighTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="強" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.HighTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.VeryHighTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="さらに強" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.VeryHighTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.SuperVeryHighTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="極めて強" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.SuperVeryHighTemplate>
+
+                <myconv:NGCommentScoreTypeTemplateSelector.UltraSuperVeryHighTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="最大" />
+                    </DataTemplate>
+                </myconv:NGCommentScoreTypeTemplateSelector.UltraSuperVeryHighTemplate>
+
+            </myconv:NGCommentScoreTypeTemplateSelector>
+
+
+
+            <uwpconv:BoolToObjectConverter x:Name="BoolToAvairableOpacityConverter">
+                <uwpconv:BoolToObjectConverter.TrueValue>
+                    <x:Double>1.0</x:Double>
+                </uwpconv:BoolToObjectConverter.TrueValue>
+                <uwpconv:BoolToObjectConverter.FalseValue>
+                    <x:Double>0.7</x:Double>
+                </uwpconv:BoolToObjectConverter.FalseValue>
+            </uwpconv:BoolToObjectConverter>
+
+            <uwpconv:ResourceNameToResourceStringConverter x:Key="ToLocalText" />
+
+            <!-- Logical Modifier-->
+            <logicalModifier:AndModifier x:Key="AndModifier" />
+            <logicalModifier:OrModifier x:Key="OrModifier" />
+            <logicalModifier:XORModifier x:Key="XORModifier" />
+
+            <compareModifier:EqualToModifier x:Key="EqualToModifier" />
+            <compareModifier:NotEqualToModifier x:Key="NotEqualToModifier" />
+            <compareModifier:GreaterThanEqualToModifier x:Key="GreaterThanEqualToModifier" />
+            <compareModifier:GreaterThanModifier x:Key="GreaterThanModifier" />
+            <compareModifier:LessThanEqualToModifier x:Key="LessThanEqualToModifier" />
+            <compareModifier:LessThanModifier x:Key="LessThanModifier" />
+
+
+            
+            <controls:VideoListItemFlyout x:Key="VideoListItemFlyout" />
+            <controls:LiveListItemFlyout x:Key="LiveListItemFlyout" />
+
+            <DataTemplate x:Key="QualityVideoTemplate">
+                <!-- 画質ごとのキャッシュ状態を表示 
+                            
+                    キャッシュリクエストされていない -> 非表示
+                    キャッシュ待機中 -> 灰色
+                    キャッシュDL中 -> 青色
+                    キャッシュ済み -> 緑色
+                            
+                    -->
+                <Border>
+                    <TextBlock Text="{Binding Quality, Converter={StaticResource ToLocalText}}"
+                           Foreground="{Binding CacheState.Value, Converter={StaticResource CacheStateToColorBrush}}"
+                            FontSize="13"
+                            Margin="0 0"
+                            VerticalAlignment="Center"
+                            x:Name="QualityText"
+                            >
+                    </TextBlock>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate x:Key="QualityVideoTemplate_TV">
+                <!-- 画質ごとのキャッシュ状態を表示 
+                            
+                    キャッシュリクエストされていない -> 非表示
+                    キャッシュ待機中 -> 灰色
+                    キャッシュDL中 -> 青色
+                    キャッシュ済み -> 緑色
+                            
+                    -->
+                <Border>
+                    <TextBlock 
+                            Visibility="{Binding IsNotCacheRequested.Value, Converter={StaticResource BooleanToVisibilityInverted}}"
+                           Foreground="{Binding CacheState.Value, Converter={StaticResource CacheStateToColorBrush}}"
+                            FontSize="13"
+                            Margin="0 0"
+                            VerticalAlignment="Center"
+                            x:Name="QualityText"
+                            >
+                    <Run Text="{Binding Quality, Converter={StaticResource ToLocalText}}" />
+                    </TextBlock>
+                </Border>
+            </DataTemplate>
+
+
+            <Color x:Key="HohoemaThemeColor" >#F8B400</Color>
+
+            <SolidColorBrush x:Key="HohoemaThemeBackgroundBrush"
+                             Color="{StaticResource HohoemaThemeColor}"
+                             >
+            </SolidColorBrush>
+
+            <SolidColorBrush x:Key="HohoemaPlayerBackgroundBrush"
+                    Color="{ThemeResource SystemAltMediumColor}" 
+                         />
+            
+            
+            
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <LinearGradientBrush x:Key="TvHeaderBackgroundBrush"
+                                 StartPoint="0, 0"
+                                 EndPoint="0, 1"
+                                 >
+
+                        <GradientStop Color="{StaticResource SystemAltMediumHighColor}" Offset="0.0" />
+                        <GradientStop Color="#00FFFFFF" Offset="1.0" />
+                    </LinearGradientBrush>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="SystemBaseHighColor">#CEFFFFFF</Color>
+                    <Color x:Key="ApplicationPageBackgroundThemeBrush">#FF191919</Color>
+
+                    <LinearGradientBrush x:Key="TvHeaderBackgroundBrush"
+                                 StartPoint="0, 0"
+                                 EndPoint="0, 1"
+                                 >
+
+                        <GradientStop Color="{StaticResource SystemAltMediumHighColor}" Offset="0.0" />
+                        <GradientStop Color="#00000000" Offset="1.0" />
+                    </LinearGradientBrush>
+
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+        </ResourceDictionary>
+    </prism:PrismUnityApplication.Resources>
+
+</prism:PrismUnityApplication>

@@ -1,0 +1,45 @@
+﻿<MenuFlyout
+    x:Class="NicoPlayerHohoema.Views.Controls.LiveListItemFlyout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NicoPlayerHohoema.Views.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <MenuFlyoutItem Text="再生"
+                    Command="{StaticResource OpenContentCommand}"
+                    CommandParameter="{Binding}"
+                                />
+
+    <MenuFlyoutItem Text="配信者情報を開く" 
+                    Command="{StaticResource OpenBroadcasterInfoCommand}"
+                    CommandParameter="{Binding}"
+                    />
+
+    <MenuFlyoutSeparator />
+
+    <MenuFlyoutItem Text="共有" 
+                    Command="{StaticResource ShareCommand}"
+                    CommandParameter="{Binding}"
+                    Visibility="{Binding Source={StaticResource IsXbox}, Converter={StaticResource BooleanToVisibility}}"
+                    />
+
+    <MenuFlyoutSubItem Text="共有" 
+                       Visibility="{Binding Source={StaticResource IsXbox}, Converter={StaticResource BooleanToVisibilityInverted}}"
+                       >
+        <MenuFlyoutItem Text="アプリを選択" 
+                        Command="{StaticResource ShareCommand}"
+                        CommandParameter="{Binding}"
+                        />
+        <MenuFlyoutItem Text="Twitterで共有" 
+                        Command="{StaticResource ShareWithTwitterCommand}"
+                        CommandParameter="{Binding}"
+                        />
+        <MenuFlyoutItem Text="コピー"
+                        Command="{StaticResource CopyToClipboardCommand}"
+                        CommandParameter="{Binding}"
+                        />
+    </MenuFlyoutSubItem>
+
+</MenuFlyout>

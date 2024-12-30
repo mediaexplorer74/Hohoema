@@ -1,86 +1,102 @@
 # Hohoema
+My fork of Hohoema (Hohoemu?) uwp app for some micro-RnD (app architecture,  and alests/notifications especially).
 
-## Win10系向けニコニコ動画・生放送プレイヤーアプリ
+## Nico Nico Douga - Live Broadcast Player App for Windows 10 families
 
-HohoemaはWindows 10系のデバイスに幅広く対応したニコニコ動画・生放送の視聴用アプリです。
+It is a player application of Nico Nico Douga and live broadcast that supports a wide range of devices of Windows 10 system.
 
-ニコニコ動画アカウントをアプリに登録することでさらに便利に利用できます。
+You need a Niconico Video account to use it.
 
-## ダウンロード
+## Download
 
-### [Hohoema - マイクロソフト ストア](https://www.microsoft.com/ja-jp/store/p/hohoema/9nblggh4rxt6?cid=hohoema\_github)
+### [Hohoema - Microsoft Store] (https://www.microsoft.com/ja-jp/store/p/hohoema/9nblggh4rxt6 )
 
-Windows 10 や XboxOne のストアアプリからダウンロードできます。
+You can download it from the store app on Windows 10 or XboxOne.
 
-無料（＋アプリのアドオンから開発への寄付を募る形）で提供しています。
+It is provided for free (+ in the form of soliciting donations from app add-ons to development).
 
-## 動作環境
 
+## Supported Operating environments 
 * Windows 10
 * Windows 10 Mobile
 * XboxOne
 
-Hohoema は UWPアプリです。（UWP = Universal Windows Platform）
+## Tech. details
+Hohoema is a UWP app.（UWP = Universal Windows Platform）
 
-ご利用には『Anniversary Update』以降のOSバージョンへの更新が必要です。
+To use it, you need to update to the OS version after "Anniversary Update".
 
-動画再生がサポートされた端末であればだいたい利用できると思います。
 
-## Hohoemaでのログイン方法
+## Feature list
 
-アプリメニューの下側にある「ログイン無し」とあるところを選択するとログイン画面が表示されます。
+* Watch Nico Nico Douga and Nico Nico Live
+  * Support for new specifications and new distribution
+  * Display of comments (size change and fps specification is also possible)
+  * Comment posts
+  * Find videos from rankings and searches
+  * Display of follow and My List
+  * Nicolepo support
 
-## 機能一覧
+* Support function by Hohoema
+  * Video Cache download
+  * Video feed function
+    * "My list of videos", "Tag search results", "User posted videos" can be displayed as new arrivals at once
+  * "See later" function and local playlist function
+  * NG setting (Video title, video contributor ID, comment) (Regular expression can be used)
 
-* ニコニコ動画やニコニコ生放送の視聴
-  * 新仕様・新配信に対応
-  * コメントの表示（サイズ変更やfps指定も可能）
-  * コメント投稿
-  * ランキングや検索から動画を見つける
-  * フォローやマイリストの表示
-  * ニコレポ対応
-  * オススメ動画の表示
-  * タイムシフト動画の視聴に対応（v0.15.0）
+* The following features are available for Windows 10 Creators Update or later
+  * Mini mode (Desktop/tablet)
 
-* Hohoemaによるサポート機能
-  * 動画キャッシュのダウンロード
-  * 動画の新着確認
-    * 「マイリストの動画」「タグ検索結果」「ユーザーの投稿動画」をまとめて新着表示できる機能
-  * 「あとで見る」機能やローカルなプレイリスト機能
-  * NG設定（動画タイトル・動画投稿者ID・コメント）（正規表現が使えます）
-  * 動画の次パート自動検出
+
+Other features and fixes can be found in the [Release Notes] (https://github.com/tor4kichi/Hohoema/wiki/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88 You can check it from ()
+
+## Future plans
+
+* [WIP] [v0.11 Nicorepo support and DMC image quality cache support] (https://github.com/tor4kichi/Hohoema/milestone/17 )
+* [Support BG processing such as v0.12 live broadcast start detection and feed automatic update] (https://github.com/tor4kichi/Hohoema/milestone/4 )
+* [Layout modification including v0.13 menu] (https://github.com/tor4kichi/Hohoema/milestone/18 )
+
+## About requests and bug reports
+
+* Feedback Hub
+  * Select "Send feedback" on the in-app settings page
+  * To use it, you need to install "Feedback Hub" from the store
+
+* [安安箱 - Google Form](https://docs.google.com/forms/d/e/1FAIpQLSc0IvUdQ7WN73A5M0zV4t5fe20BVV7B4CXmiKpPTrHOlqyXiw/viewform )
+  
+* [Create a new issue - GitHub] (https://github.com/tor4kichi/Hohoema/issues )
   
 
-その他の機能や修正点は [リリースノート](https://github.com/tor4kichi/Hohoema/releases) から確認できます
+Future changes and confirmed bugs can be found in [Issue] (https://github.com/tor4kichi/Hohoema/issues You can check it from ()
 
-## 要望・バグ報告について
 
-下記連絡先から伝えやすいものをお選びください。問題点とお使いのアプリのバージョン（アプリの設定画面右上に表示されてます）をお伝えください。
-
-* twitter.com/tor4kichi にリプライかDM
-* tor4kichi@hotmail.com にメール
-* [新しい課題を立てる - GitHub](https://github.com/tor4kichi/Hohoema/issues)
-  
-不具合報告の場合、デバッグモードを有効にして不具合情報を抽出、報告に添付して頂けると対応がスムーズに進むかもしれません。
-
-* [Hohoemaのデバッグモードを有効にする方法](https://github.com/tor4kichi/Hohoema/wiki/Hohoema%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B)
-
-今後の変更や確認されているバグは [課題一覧](https://github.com/tor4kichi/Hohoema/issues) から確認できます
-
-## ライセンス
+## License
 
 GPL v3
 
-## 制作環境
+## Production environment
 
 * VisualStudio 2017 Community
-* VisualStudio Code
+* UWP (C# / .Net / Xaml)
 * Inkscape
 
-## 開発への支援について
 
-Hohoemaは [tor4kichi](https://twitter.com/tor4kichi) が個人で開発しています。また、問題報告や実機確認などTwitter・Github・FeedbackHub等で色んな方からの協力を頂きながら制作しています。
+## Support for development
 
-アプリ開発の応援には、[ストアでのレビュー]((ms-windows-store://pdp/?ProductId=9nblggh4rxt6))や、 Hohoemaアプリ内の「設定」→「Hohoemaのアドオン（ページ最下段）」→「Hohoemaを応援する」から支援が出来るようになっています。（ストアでの売上は 5% がマイクロソフトに手数料として差し引かれます。）
+Hohoema is [tor4kichi] (https://twitter.com/tor4kichi I have a lot of work to do, but I have a lot of work to do.In addition, we have made while getting cooperation in Twitter, Github, FeedbackHub, etc., such as problem report and actual machine confirmation.
 
-使えるニコ動アプリとして制作を続けていきますので、ご支援頂けると助かります。
+For the motivation of the production also [review in the store] ((ms-windows-store://pdp/?ProductID=9nblggh4rxt6)).
+
+In addition, financial support has become possible from "Settings" → "Add-on of Hohoema (bottom of the page)" → "Support Hohoema" in the Hohoema app.(30% of sales in the store will be deducted from Microsoft as a fee.)）
+
+We will continue to Nico move players that can be used, so thank you for your support.
+
+## Reference(s)
+- https://twitter.com/tor4kichi/Hohoema Original Hohoema project 
+- https://twitter.com/tor4kichi Author|Developer of Original Hohoema project
+
+## ..
+As is. Noi support. RnD only! DIY
+
+## .
+[m][e] 202[4..5]

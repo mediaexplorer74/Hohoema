@@ -1,0 +1,28 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NicoPlayerHohoema.Commands">
+
+    <local:AddAfterViewPlaylistCommand x:Key="AddAfterViewPlaylistCommand" />
+    <local:AddFeedSourceCommand x:Key="AddFeedSourceCommand" />
+    <local:AddMylistCommand x:Key="AddMylistCommand" />
+    <local:AddToHiddenUserCommand x:Key="AddToHiddenUserCommand" />
+    <local:CopyToClipboardCommand x:Key="CopyToClipboardCommand" />
+
+    <local:FeedGroupEditCommand x:Key="FeedGroupEditCommand" />
+    <local:FeedGroupRemoveCommand x:Key="FeedGroupRemoveCommand" />
+    <local:FeedGroupUpdateCommand x:Key="FeedGroupUpdateCommand" />
+
+    <local:OpenBroadcasterInfoCommand x:Key="OpenBroadcasterInfoCommand" />
+    <local:OpenContentCommand x:Key="OpenContentCommand" />
+    <local:OpenFeedSourceCommand x:Key="OpenFeedSourceCommand" />
+    <local:OpenVideoInfoCommand x:Key="OpenVideoInfoCommand" />
+    <local:OpenVideoOwnerVideoListCommand x:Key="OpenVideoOwnerVideoListCommand" />
+    <local:RemoveFollowCommand x:Key="RemoveFollowCommand" />
+    <local:RemoveFeedSourceCommand x:Key="RemoveFeedSourceCommand" />
+    <local:ShareWithTwitterCommand x:Key="ShareWithTwitterCommand" />
+    <local:ShareCommand x:Key="ShareCommand" />
+    <local:VideoDeleteCacheCommand x:Key="VideoDeleteCacheCommand" />
+    <local:VideoRequestCacheCommand x:Key="VideoRequestCacheCommand" />
+
+</ResourceDictionary>

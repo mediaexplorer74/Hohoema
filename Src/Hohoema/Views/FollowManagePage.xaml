@@ -1,0 +1,237 @@
+﻿<Page
+    x:Class="NicoPlayerHohoema.Views.FollowManagePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NicoPlayerHohoema.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvvm="using:Prism.Windows.Mvvm"
+    xmlns:view="using:NicoPlayerHohoema.Views"
+    xmlns:mybehavior="using:NicoPlayerHohoema.Views.Behaviors"
+    xmlns:toolkit="using:WinRTXamlToolkit.Controls"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:controls="using:NicoPlayerHohoema.Views.Controls"
+    xmlns:uwpcontrol="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:hardTrigger="using:AdaptiveTriggerLibrary.Triggers.HardwareInterfaceTriggers"
+    xmlns:uwpui="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    mvvm:ViewModelLocator.AutoWireViewModel="True"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="FavoriteItemTemplate">
+            <TextBlock Text="{Binding Label}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap"
+                       />
+        </DataTemplate>
+
+
+        <local:FollowTypeToSymbolIconConverter x:Key="FavTypeToSymbol" />
+    </Page.Resources>
+
+
+    <i:Interaction.Behaviors>
+        <core:EventTriggerBehavior EventName="Unloaded">
+            <core:CallMethodAction TargetObject="{Binding}" MethodName="Dispose" />
+        </core:EventTriggerBehavior>
+    </i:Interaction.Behaviors>
+
+
+    <Grid x:Name="PageRoot">
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- ウィンドウサイズごとの表示 -->
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="520" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitleLayout.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+            
+            
+            <!-- TVモードの仮対応 -->
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <hardTrigger:DeviceFamilyTrigger Condition="Xbox" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ContentLayout.Margin" Value="0 27 48 27" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+
+
+            <!-- 読み込み中 -->
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <StateTrigger IsActive="{Binding NowUpdatingFavList.Value}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="LoadingProgressBar.IsIndeterminate" Value="True" />
+                        <Setter Target="LoadingProgressBar.Visibility" Value="Visible" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        
+        <toolkit:DockPanel x:Name="ContentLayout">
+
+            <Border toolkit:DockPanel.Dock="Top" 
+                    Height="48"
+                    >
+                <toolkit:DockPanel >
+                    <StackPanel toolkit:DockPanel.Dock="Right" 
+                                Orientation="Horizontal"
+                                >
+                        <Button Command="{Binding UpdateFavListCommand}"
+                                CommandParameter="{Binding ElementName=FavListContainer, Path=SelectedItem}"
+                                Background="Transparent"
+                                >
+                            <SymbolIcon Symbol="Refresh" />
+                        </Button>
+                    </StackPanel>
+
+                    <Border Background="Transparent" IsHitTestVisible="True"
+                                Margin="16 0 0 0"
+                            x:Name="TitleLayout"
+                                >
+                        <TextBlock Text="{Binding Title}" 
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource TitleTextBlockStyle}"
+                                    >
+                        </TextBlock>
+                    </Border>
+                </toolkit:DockPanel>
+            </Border>
+
+            <ScrollViewer x:Name="ScrollList"
+                      >
+                <StackPanel Margin="16 16 16 16">
+
+                    <ProgressBar IsIndeterminate="False"
+                                 x:Name="LoadingProgressBar"
+                                 Visibility="Collapsed"
+                                 Height="8"
+                                 HorizontalAlignment="Stretch"
+                                 />
+                    <Pivot ItemsSource="{Binding Lists}" x:Name="FavListContainer"
+                                  >
+
+                        <Pivot.HeaderTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"
+                                                   toolkit:DockPanel.Dock="Top"                                            
+                                                    >
+                                    <SymbolIcon Symbol="{Binding FavType, Converter={StaticResource FavTypeToSymbol}}" 
+                                                            Margin="0 0 8 0"
+                                                            VerticalAlignment="Center"
+                                                            />
+
+                                    <TextBlock Text="{Binding Label}" 
+                                                            Margin="0 0"
+                                                            VerticalAlignment="Center"
+                                                        />
+                                </StackPanel>
+                            </DataTemplate>
+                        </Pivot.HeaderTemplate>
+                        <Pivot.ItemTemplate>
+                            <DataTemplate>
+
+                                <toolkit:DockPanel>
+                                    <Grid Margin="0 16"
+                                          toolkit:DockPanel.Dock="Top"
+                                          >
+                                        <TextBlock  
+                                                            VerticalAlignment="Center"
+                                                            Margin="8 0"
+                                                        >
+                                            <Run Text="登録数：" />
+                                            <Run Text="{Binding ItemCount.Value}" />
+                                            <Run Text="/" />
+                                            <Run Text="{Binding MaxItemCount}" />
+                                        </TextBlock>
+                                    </Grid>
+
+                                    <GridView ItemsSource="{Binding Items}"
+                                              ItemTemplate="{StaticResource FavoriteItemTemplate}"
+                                              Margin="0 8 0 0"
+                                              HorizontalAlignment="Stretch"
+                                                  HorizontalContentAlignment="Left"
+                                              IsItemClickEnabled="True"
+                                              uwpui:ListViewBase.Command="{StaticResource OpenContentCommand}"
+                                              SelectionMode="None"
+                                          >
+                                        <i:Interaction.Behaviors>
+                                            <mybehavior:ListViewBaseItemContextFlyout />
+                                        </i:Interaction.Behaviors>
+                                        
+                                        
+                                        <GridView.ContextFlyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem Text="{Binding Label}" IsEnabled="False" />
+
+                                                <MenuFlyoutItem Text="フィード登録"
+                                                                Command="{StaticResource AddFeedSourceCommand}"
+                                                                CommandParameter="{Binding FollowItemInfo}"
+                                                                />
+
+                                                <MenuFlyoutSeparator />
+
+                                                <MenuFlyoutItem Text="フォロー解除"
+                                                                Command="{StaticResource RemoveFollowCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                />
+
+                                            </MenuFlyout>
+                                        </GridView.ContextFlyout>
+                                        <GridView.ItemContainerStyle>
+                                            <Style TargetType="GridViewItem">
+                                                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                                                <Setter Property="Margin" Value="0 0 8 8" />
+                                                <Setter Property="MinWidth" Value="140" />
+                                                <Setter Property="MinHeight" Value="80" />
+                                                <Setter Property="Padding" Value="8" />
+                                            </Style>
+                                        </GridView.ItemContainerStyle>
+
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <ItemsWrapGrid Orientation="Horizontal"
+                                                                   HorizontalAlignment="Left"
+                                                                   />
+
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                    </GridView>
+
+                                </toolkit:DockPanel>
+
+                                
+                            </DataTemplate>
+                        </Pivot.ItemTemplate>
+                    </Pivot>
+                </StackPanel>
+            </ScrollViewer>
+        </toolkit:DockPanel>
+    </Grid>
+    
+</Page>
