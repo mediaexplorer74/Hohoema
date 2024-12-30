@@ -50,24 +50,11 @@ To use it, you need to update to the OS version after "Anniversary Update".
 
 Other features and fixes can be found in the [Release Notes] (https://github.com/tor4kichi/Hohoema/wiki/%E3%83%AA%E3%83%AA%E3%83%BC%E3%82%B9%E3%83%8E%E3%83%BC%E3%83%88 You can check it from ()
 
-## Future plans
+## Future plans (retrospective , for now)
 
-* [WIP] [v0.11 Nicorepo support and DMC image quality cache support] (https://github.com/tor4kichi/Hohoema/milestone/17 )
-* [Support BG processing such as v0.12 live broadcast start detection and feed automatic update] (https://github.com/tor4kichi/Hohoema/milestone/4 )
-* [Layout modification including v0.13 menu] (https://github.com/tor4kichi/Hohoema/milestone/18 )
-
-## About requests and bug reports
-
-* Feedback Hub
-  * Select "Send feedback" on the in-app settings page
-  * To use it, you need to install "Feedback Hub" from the store
-
-* [安安箱 - Google Form](https://docs.google.com/forms/d/e/1FAIpQLSc0IvUdQ7WN73A5M0zV4t5fe20BVV7B4CXmiKpPTrHOlqyXiw/viewform )
-  
-* [Create a new issue - GitHub] (https://github.com/tor4kichi/Hohoema/issues )
-  
-
-Future changes and confirmed bugs can be found in [Issue] (https://github.com/tor4kichi/Hohoema/issues You can check it from ()
+* [WIP] [v0.11 Nicorepo support and DMC image quality cache support](https://github.com/tor4kichi/Hohoema/milestone/17)
+* [Support BG processing such as v0.12 live broadcast start detection and feed automatic update](https://github.com/tor4kichi/Hohoema/milestone/4)
+* [Layout modification including v0.13 menu](https://github.com/tor4kichi/Hohoema/milestone/18)
 
 
 ## License
@@ -83,7 +70,7 @@ GPL v3
 
 ## Support for development
 
-Hohoema is [tor4kichi] (https://twitter.com/tor4kichi I have a lot of work to do, but I have a lot of work to do.In addition, we have made while getting cooperation in Twitter, Github, FeedbackHub, etc., such as problem report and actual machine confirmation.
+Hohoema is [tor4kichi](https://twitter.com/tor4kichi) I have a lot of work to do, but I have a lot of work to do.In addition, we have made while getting cooperation in Twitter, Github, FeedbackHub, etc., such as problem report and actual machine confirmation.
 
 For the motivation of the production also [review in the store] ((ms-windows-store://pdp/?ProductID=9nblggh4rxt6)).
 
